@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | TastyBites</title>
+    
+    <!-- Importing a premium font for that modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL VARIABLES & RESET --- */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary-color: #FFBE33;
+            --primary-hover: #e6a825;
+            --text-white: #FFFFFF;
+            --text-grey: #A8A8A8;
+            --font-main: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVBAR --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--text-grey);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* --- PAGE HERO TITLE --- */
+        .menu-hero {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .menu-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .menu-hero p {
+            color: var(--text-grey);
+            font-size: 1.1rem;
+        }
+
+        /* --- FILTER TABS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 5%;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 190, 51, 0.3);
+        }
+
+        /* --- MENU GRID --- */
+        .menu-grid-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            display: grid;
+            /* Auto-fit creates responsive columns automatically */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #2a2a2a;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-color);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            background-color: #2c2c2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        /* Simple CSS pattern for placeholder image */
+        .item-image::after {
+            content: "🍔";
+            font-size: 4rem;
+            filter: grayscale(100%) opacity(0.2);
+        }
+
+        .item-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .item-desc {
+            color: var(--text-grey);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .order-btn {
+            background-color: transparent;
+            border: 1px solid var(--text-grey);
+            color: var(--text-white);
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .order-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #0e0e0e;
+            border-top: 1px solid #333;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-grey);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE TWEAKS --- */
+        @media (max-width: 768px) {
+            .menu-hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Simple hide for this demo */
+            .filter-container { gap: 0.5rem; }
+            .filter-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        }
+                /* Mobile par hamburger click hone par menu kholne ke liye */
+    .nav-links.active {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* Content ko vertical center karega */
+        align-items: center !important;     /* Text ko horizontal center karega */
+        text-align: center !important;       /* Links ka text center karega */
+        position: absolute !important;
+        top: 70px !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #111111 !important;
+        padding: 20px 0 !important;
+        z-index: 999 !important;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; box-sizing: border-box; z-index: 1000;">
+    <div class="logo" style="font-weight: bold; font-size: 24px; font-family: sans-serif; color: #ffffff; letter-spacing: 1px;">
+        ULTIMATE <span style="color: #ffb703;">CAFE</span>
+    </div>
+    
+    <ul id="nav-links" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('active')" style="display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001;">
+        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
+        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
+        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
+    </div>
+</header>
+    <!-- Page Title -->
+    <section class="menu-hero">
+        <h1>Our Delicious Menu</h1>
+        <p>Freshly prepared with love & premium ingredients</p>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="filter-container">
+        <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+        <button class="filter-btn" onclick="filterMenu('pizza')">Pizzas</button>
+        <button class="filter-btn" onclick="filterMenu('burger')">Burgers</button>
+        <button class="filter-btn" onclick="filterMenu('sides')">Sides & Snacks</button>
+        <button class="filter-btn" onclick="filterMenu('drinks')">Mocktails & Drinks</button>
+    </section>
+
+    <!-- Menu Grid Items -->
+    <main class="menu-grid-container" id="menuGrid">
+        
+        <!-- Item 1: Pizza -->
+        <article class="menu-item" data-category="pizza">
+            <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?q=80&w=600&auto=format&fit=crop" alt="Premium Farmhouse Pizza" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
+                <!-- Using CSS placeholder for stability, replace logic above with real img tag if available -->
+            <div class="item-content">
+                <div class="item-header">
+                    <h3 class="item-name">Premium Farmhouse Pizza</h3>
+                    <span class="item-price">₹349</span>
+                </div>
+                <p class="item-desc">Loaded with Capsicum, Red Paprika, Olives, Grilled Mushroom & Fresh Basil.</p>
+                <a href="https://wa.me/919999999999?text=Hello!%20I%20want%20to%20order%20Premium%20Farmhouse%20Pizza" target="_blank" style="text-decoration: none; display: block; width: 100%;">
+    <button class="order-btn" style="width: 100%; cursor: pointer;">Order Now</button>
+</a>
+            </div>
+        </article>
+
+        <!-- Item 2: Burger -->
+        <article class="menu-item" data-category="burger">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop" alt="Crunchy Veg Burger" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <div class="item-content">
+                <div class="item-header">
+                    <h3 class="item-name">Crunchy Veg Burger</h3>
+                    <span class="item-price">₹199</span>
+                </div>
+                <p class="item-desc">Spicy vegetable patty, melted cheese, iceberg lettuce & house sauce.</p>
+                <a href="https://wa.me/919999999999?text=Hello!%20I%20want%20to%20order%20Crunchy%20Veg%20Burger" target="_blank" style="text-decoration: none; display: block; width: 100%;">
+    <button class="order-btn" style="width: 100%; cursor: pointer;">Order Now</button>
+</a>
+            </div>
+        </article>
+
+        <!-- Item 3: Pizza -->
+        <article class="menu-item" data-category="pizza">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop" alt="Pepper Barbeque Pizza" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <div class="item-content">
+                <div class="item-header">
+                    <h3 class="item-name">Pepper Barbeque Pizza</h3>
+                    <span class="item-price">₹299</span>
+                </div>
+                <p class="item-desc">Loaded with crispy bacon, extra cheese and spicy jalapeños.</p>
+                <a href="https://wa.me/919999999999?text=Hello!%20I%20want%20to%20order%20Pepper%20Barbeque%20Pizza" target="_blank" style="text-decoration: none; display: block; width: 100%;">
+    <button class="order-btn" style="width: 100%; cursor: pointer;">Order Now</button>
+</a>
+                          </div>
+</section>
+</body>
+</html>
