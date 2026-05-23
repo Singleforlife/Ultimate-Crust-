@@ -166,6 +166,33 @@
         }
 
         /* =========================================
+           NEW FEATURE: STOREFRONT BANNER STYLE
+           ========================================= */
+        .storefront-banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: -40px auto 4rem auto; /* Overlaps beautifully with hero bottom */
+            padding: 0 5%;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .storefront-banner img {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 190, 51, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            transition: var(--transition);
+        }
+
+        .storefront-banner img:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(255, 190, 51, 0.15);
+        }
+
+        /* =========================================
            BUTTONS & CTA
            ========================================= */
         .btn-primary {
@@ -344,6 +371,10 @@
                 font-size: 1rem;
             }
 
+            .storefront-banner {
+                margin: -20px auto 2rem auto;
+            }
+
             .grid-container {
                 grid-template-columns: 1fr;
             }
@@ -359,21 +390,22 @@
 <body>
 
     <header style="position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; box-sizing: border-box; z-index: 1000;">
-    <div class="logo" style="font-weight: bold; font-size: 24px; font-family: sans-serif; color: #ffffff; letter-spacing: 1px;">
-        ULTIMATE <span style="color: #ffb703;">CAFE</span>
-    </div>
-    
-    <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()" style="font-size: 32px; color: #ffffff; cursor: pointer; user-select: none; padding: 5px; margin-right: 5px;">
-        &#9776;
-    </div>
-    
-    <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</header>
+        <div class="logo" style="font-weight: bold; font-size: 24px; font-family: sans-serif; color: #ffffff; letter-spacing: 1px;">
+            ULTIMATE <span style="color: #ffb703;">CAFE</span>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()" style="font-size: 32px; color: #ffffff; cursor: pointer; user-select: none; padding: 5px; margin-right: 5px;">
+            &#9776;
+        </div>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
+
     <header class="hero">
         <div class="hero-content">
             <h1>Taste The <span>Extraordinary</span></h1>
@@ -381,6 +413,10 @@
             <a href="menu.html" class="btn-primary">Explore Our Menu</a>
         </div>
     </header>
+
+    <div class="storefront-banner">
+        <img src="https://image.replicate.delivery/xpbkg/H9WdfjHInO0e2_lVfDWe8XvA57e5eP3E8V_9P39p6_E/output.png" alt="Ultimate Cafe Premium Storefront Branding">
+    </div>
 
     <section class="highlights">
         <div class="section-title">
