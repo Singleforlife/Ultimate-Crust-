@@ -3,316 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | TastyBites</title>
-    
-    <!-- Importing Poppins Font for Premium Look -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Ultimate Cafe & Restro | Gallery</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ultimate Cafe & Restro" />
+    <meta property="og:title" content="Ultimate Cafe & Restro | Gallery" />
+    <meta property="og:description" content="A look inside Ultimate Cafe & Restro, Rohtak — ambience, food and vibes." />
+    <meta property="og:image" content="https://ultimatecafeno1.netlify.app/fine.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:url" content="https://ultimatecafeno1.netlify.app/gallery.html" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23121212'/%3E%3Ctext x='50' y='68' font-size='58' fill='%23FFBE33' text-anchor='middle' font-family='Georgia,serif'%3EU%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- GLOBAL VARIABLES & RESET --- */
         :root {
             --bg-color: #121212;
+            --bg-deep: #0a0a0a;
             --card-bg: #1e1e1e;
-            --primary-color: #FFBE33;
+            --accent-color: #FFBE33;
             --text-white: #FFFFFF;
             --text-grey: #A8A8A8;
-            --font-main: 'Poppins', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-main: 'Montserrat', sans-serif;
             --transition: all 0.4s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            line-height: 1.6;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-grey); line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
-        /* --- NAVBAR (Same as other pages) --- */
-        header {
-            background-color: rgba(18, 18, 18, 0.95);
-            border-bottom: 1px solid #333;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
+        /* ---------- Navbar (identical to other 3 pages) ---------- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111;
+            display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 190, 51, 0.12);
+        }
+        .logo { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: #ffffff; letter-spacing: 0.5px; }
+        .logo span { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-grey); transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 32px; color: #ffffff; cursor: pointer; user-select: none; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute; top: 70px; left: 0; width: 100%; background-color: var(--card-bg);
+                flex-direction: column; align-items: center; padding: 2rem 0; gap: 1.5rem;
+                transform: translateY(-150%); transition: var(--transition); opacity: 0; visibility: hidden;
+            }
+            .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: 1px;
-        }
+        /* ---------- Hero ---------- */
+        .gallery-hero { text-align: center; padding: 130px 5% 1rem; }
+        .gallery-hero .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-color); }
+        .gallery-hero h1 { font-family: var(--font-display); font-size: 2.6rem; color: var(--text-white); margin: 0.5rem 0; }
+        .gallery-hero p { color: var(--text-grey); font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            color: var(--text-grey);
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        /* --- HERO SECTION --- */
-        .gallery-hero {
-            text-align: center;
-            padding: 4rem 1rem 2rem;
-        }
-
-        .gallery-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .gallery-hero p {
-            color: var(--text-grey);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- GALLERY GRID --- */
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
-            
-            /* Responsive Grid Setup */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
+        /* ---------- Gallery grid ---------- */
+        .gallery-container { max-width: 1200px; margin: 0 auto; padding: 2rem 5% 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 
         .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            height: 250px; /* Fixed height for uniformity */
-            background-color: var(--card-bg);
-            border: 1px solid #333;
-            
-            /* Hover Transition Setup */
-            transition: var(--transition);
+            position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; height: 250px;
+            background-color: var(--card-bg); border: 1px solid #2a2a2a; transition: var(--transition);
         }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
 
-        /* The Image Placeholder */
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .gallery-item:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 0 20px rgba(255, 190, 51, 0.35); }
+        .gallery-item:hover .gallery-img { transform: scale(1.1); }
 
-        /* Fallback background/emoji if images fail to load */
-        .img-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            background: #252525;
-            background-image: linear-gradient(45deg, #252525 25%, #2a2a2a 25%, #2a2a2a 50%, #252525 50%, #252525 75%, #2a2a2a 75%, #2a2a2a 100%);
-            background-size: 20px 20px;
-        }
-
-        /* HOVER EFFECTS (Crucial Requirement) */
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            /* The Golden Glow Box Shadow */
-            box-shadow: 0 0 20px rgba(255, 190, 51, 0.4);
-        }
-
-        .gallery-item:hover .gallery-img {
-            /* The Zoom Effect */
-            transform: scale(1.1);
-        }
-
-        .gallery-item:hover .img-placeholder {
-            transform: scale(1.1);
-        }
-
-        /* Dark Overlay Text on Hover */
         .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-            opacity: 0;
-            transition: var(--transition);
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 1.5rem; opacity: 0; transition: var(--transition);
         }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .overlay h3 { font-family: var(--font-display); color: var(--accent-color); font-size: 1.4rem; margin-bottom: 0.2rem; transform: translateY(20px); transition: transform 0.4s ease; }
+        .gallery-item:hover .overlay h3 { transform: translateY(0); }
+        .overlay p { color: var(--text-white); font-size: 0.88rem; transform: translateY(20px); transition: transform 0.4s ease 0.1s; }
+        .gallery-item:hover .overlay p { transform: translateY(0); }
 
-        .gallery-item:hover .overlay {
-            opacity: 1;
+        /* ---------- Footer (identical to other 3 pages) ---------- */
+        footer { background-color: var(--bg-deep); padding: 3rem 5% 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-icon-links { display: flex; gap: 1.2rem; }
+        .social-icon {
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background-color: var(--card-bg); color: var(--text-white); transition: var(--transition);
         }
+        .social-icon:hover { background-color: var(--accent-color); color: #121212; }
+        .social-icon svg { width: 20px; height: 20px; }
+        .copyright { font-size: 0.85rem; color: #555; }
 
-        .overlay h3 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 0.2rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .overlay h3 {
-            transform: translateY(0);
-        }
-
-        .overlay p {
-            color: var(--text-white);
-            font-size: 0.9rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease 0.1s; /* Slight delay */
-        }
-
-        .gallery-item:hover .overlay p {
-            transform: translateY(0);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #0e0e0e;
-            border-top: 1px solid #333;
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-grey);
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .gallery-hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; } /* Hiding nav links on small mobile for simplicity */
-            .gallery-container {
-                grid-template-columns: 1fr; /* 1 column on mobile */
-            }
+            .gallery-hero h1 { font-size: 2rem; }
+            .gallery-container { grid-template-columns: 1fr; }
         }
-            /* Mobile par hamburger click hone par menu kholne ke liye */
-    .nav-links.active {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        position: absolute !important;
-        top: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        background-color: #111111 !important;
-        padding: 20px 0 !important;
-        z-index: 999 !important;
-    }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header style="position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; box-sizing: border-box; z-index: 1000;">
-    <div class="logo" style="font-weight: bold; font-size: 24px; font-family: sans-serif; color: #ffffff; letter-spacing: 1px;">
-        ULTIMATE <span style="color: #ffb703;">CAFE</span>
-    </div>
-    
-    <ul id="nav-links" class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <header class="navbar">
+        <div class="logo">ULTIMATE <span>CAFE</span></div>
+        <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
 
-    <div class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('active')" style="display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1010;">
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-    </div>
-</header>
-    <!-- Page Title -->
     <section class="gallery-hero">
+        <span class="eyebrow">Take A Look Inside</span>
         <h1>Our Cafe Vibes</h1>
-        <p>Take a virtual tour of our dream setup, neon lights, and cozy corners.</p>
+        <p>A virtual tour of the setup, the neon lights, and the cozy corners.</p>
     </section>
 
-    <!-- Gallery Grid -->
     <main class="gallery-container">
 
-        <!-- Image 1: Interior -->
         <article class="gallery-item">
-            <!-- In a real scenario, use <img src="path.jpg" class="gallery-img" alt="Cafe Interior"> -->
-            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600&auto=format&fit=crop" alt="Cozy Interior" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600&auto=format&fit=crop" alt="Cozy Interior" loading="lazy">
             <div class="overlay">
                 <h3>Cozy Interior</h3>
                 <p>Industrial-chic ambience designed for comfort.</p>
             </div>
         </article>
 
-        <!-- Image 2: Seating -->
         <article class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=600&auto=format&fit=crop" alt="VIP Seating" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=600&auto=format&fit=crop" alt="VIP Seating" loading="lazy">
             <div class="overlay">
                 <h3>VIP Seating</h3>
                 <p>Comfortable booths perfect for long conversations.</p>
             </div>
         </article>
 
-        <!-- Image 3: Neon Lights -->
         <article class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=600&auto=format&fit=crop" alt="Neon Dream" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=600&auto=format&fit=crop" alt="Neon Dream" loading="lazy">
             <div class="overlay">
                 <h3>Neon Dream</h3>
                 <p>Glow up your evenings with our signature neon signs.</p>
             </div>
         </article>
 
-        <!-- Image 4: Coffee -->
         <article class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop" alt="Barista Special" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
-
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop" alt="Barista Special" loading="lazy">
             <div class="overlay">
                 <h3>Barista Special</h3>
                 <p>Watch our masters brew the perfect cup.</p>
             </div>
         </article>
 
-        <!-- Image 5: Customers -->
         <article class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?q=80&w=600&auto=format&fit=crop" alt="Happy Vibes" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?q=80&w=600&auto=format&fit=crop" alt="Happy Vibes" loading="lazy">
             <div class="overlay">
                 <h3>Happy Vibes</h3>
                 <p>Creating memories with every bite.</p>
             </div>
         </article>
 
-        <!-- Image 6: Food Plating -->
         <article class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Art on Plate" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Art on Plate" loading="lazy">
             <div class="overlay">
                 <h3>Art on Plate</h3>
                 <p>We serve aesthetics as good as our taste.</p>
@@ -321,10 +181,26 @@
 
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 TastyBites Cafe. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="logo">Ultimate <span>Cafe</span></div>
+            <div class="social-icon-links">
+                <a href="https://instagram.com/hiddenpainofficial123" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://wa.me/919050257187" target="_blank" class="social-icon" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5A9.4 9.4 0 0 0 3.8 17L2.5 21.5l4.6-1.2A9.4 9.4 0 1 0 12 2.5zm5.4 13.3c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.5-3.9-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.1.2-.2.3-.1.5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.9c.2.1.4.2.4.4.1.2.1.6-.1 1.2z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 Ultimate Cafe & Restro. All Rights Reserved.</div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
