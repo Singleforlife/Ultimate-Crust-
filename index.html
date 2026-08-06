@@ -21,7 +21,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
@@ -118,7 +117,7 @@
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
         .card { background-color: var(--card-bg); padding: 2.8rem 2rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: var(--transition); }
         .card:hover { transform: translateY(-8px); border-color: var(--accent-color); }
-        .card-icon { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 1.4rem; display: block; }
+        .card-icon { width: 40px; height: 40px; color: var(--accent-color); margin: 0 auto 1.4rem; display: block; }
         .card h3 { font-family: var(--font-display); color: var(--text-white); font-size: 1.4rem; margin-bottom: 0.8rem; }
         .card p { font-size: 0.92rem; }
 
@@ -142,7 +141,7 @@
         /* ---------- Visit us / trust bar ---------- */
         .visit-us { background: var(--bg-deep); padding: 3rem 5%; }
         .visit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .visit-item i { color: var(--accent-color); font-size: 1.4rem; margin-bottom: 0.6rem; display: block; }
+        .visit-item svg { width: 28px; height: 28px; color: var(--accent-color); margin: 0 auto 0.6rem; display: block; }
         .visit-item h4 { font-family: var(--font-display); color: var(--text-white); font-size: 1rem; margin-bottom: 0.3rem; }
         .visit-item p { font-size: 0.85rem; }
 
@@ -155,6 +154,7 @@
             border-radius: 50%; background-color: var(--card-bg); color: var(--text-white); font-size: 1.1rem; transition: var(--transition);
         }
         .social-icon:hover { background-color: var(--accent-color); color: #121212; }
+        .social-icon svg { width: 20px; height: 20px; }
         .copyright { font-size: 0.85rem; color: #555; }
 
         /* ---------- Scroll reveal (respects reduced motion) ---------- */
@@ -217,17 +217,17 @@
         <!-- CUSTOMIZE: swap these 3 for the real client's actual strengths. Don't promise delivery unless they truly deliver. -->
         <div class="grid-container">
             <div class="card reveal">
-                <i class="fa-solid fa-leaf card-icon"></i>
+                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C10 4 4 10 4 20c8 0 14-6 14-14 0-.7 0-1.3-.1-2z"/><path d="M5 19c2.5-5 6-8.5 11-11"/></svg>
                 <h3>Freshly Made</h3>
                 <p>Every dish is prepared to order with quality, locally sourced ingredients.</p>
             </div>
             <div class="card reveal">
-                <i class="fa-solid fa-mug-saucer card-icon"></i>
+                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8z"/><path d="M15 9h2.2a2.3 2.3 0 0 1 0 4.6H15"/><path d="M2 20h16"/></svg>
                 <h3>Warm Hospitality</h3>
                 <p>A welcoming space to sit back, work, or catch up over coffee.</p>
             </div>
             <div class="card reveal">
-                <i class="fa-solid fa-star card-icon"></i>
+                <svg class="card-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.8l-5.9 3.4 1.3-6.5-4.9-4.5 6.6-.7z"/></svg>
                 <h3>Loved Locally</h3>
                 <p>Growing into one of Rohtak's favourite everyday café spots.</p>
             </div>
@@ -277,17 +277,17 @@
         <!-- CUSTOMIZE: replace all three with the client's real details -->
         <div class="visit-grid reveal">
             <div class="visit-item">
-                <i class="fa-solid fa-location-dot"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.4-7-11.5A7 7 0 0 1 19 9.5C19 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
                 <h4>Address</h4>
                 <p>Add shop address here</p>
             </div>
             <div class="visit-item">
-                <i class="fa-solid fa-clock"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
                 <h4>Hours</h4>
                 <p>11:00 AM – 11:00 PM, Daily</p>
             </div>
             <div class="visit-item">
-                <i class="fa-solid fa-certificate"></i>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.3 14.5L6.5 21l5.5-3.2L17.5 21l-1.8-6.5"/></svg>
                 <h4>FSSAI Lic. No.</h4>
                 <p>XXXXXXXXXXXXXXX</p>
             </div>
@@ -298,8 +298,12 @@
         <div class="footer-content">
             <div class="logo">Ultimate <span>Cafe</span></div>
             <div class="social-links">
-                <a href="https://instagram.com/aapka_username" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/919999999999" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/aapka_username" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://wa.me/919999999999" target="_blank" class="social-icon" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5A9.4 9.4 0 0 0 3.8 17L2.5 21.5l4.6-1.2A9.4 9.4 0 1 0 12 2.5zm5.4 13.3c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.5-3.9-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.1.2-.2.3-.1.5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.9c.2.1.4.2.4.4.1.2.1.6-.1 1.2z"/></svg>
+                </a>
             </div>
         </div>
         <div class="copyright">&copy; 2026 Ultimate Cafe & Restro. All Rights Reserved.</div>
