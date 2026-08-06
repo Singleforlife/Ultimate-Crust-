@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ultimate Cafe & Restro | Premium Dining</title>
-    
-    <!-- Open Graph / Social Media Link Preview Tags -->
+
+    <!-- Open Graph / Social Media Link Preview Tags — UNCHANGED, confirmed working on WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ultimate Cafe & Restro" />
     <meta property="og:title" content="Ultimate Cafe & Restro | Premium Dining" />
@@ -15,27 +15,29 @@
     <meta property="og:image:height" content="675" />
     <meta property="og:url" content="https://ultimatecafeno1.netlify.app" />
 
+    <!-- Favicon: simple gold "U" mark, no extra image file needed -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23121212'/%3E%3Ctext x='50' y='68' font-size='58' fill='%23FFBE33' text-anchor='middle' font-family='Georgia,serif'%3EU%3C/text%3E%3C/svg%3E">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
             --bg-color: #121212;
+            --bg-deep: #0a0a0a;
             --card-bg: #1e1e1e;
             --accent-color: #FFBE33;
-            --accent-hover: #e5a800;
             --text-white: #FFFFFF;
             --text-grey: #A8A8A8;
+            --font-display: 'Playfair Display', serif;
             --font-main: 'Montserrat', sans-serif;
             --transition: all 0.3s ease-in-out;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-main);
@@ -48,114 +50,117 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+        /* ---------- Navbar ---------- */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             background-color: #111111;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 24px;
-            box-sizing: border-box;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 24px; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 190, 51, 0.12);
         }
-
-        .logo {
-            font-weight: bold;
-            font-size: 24px;
-            font-family: sans-serif;
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-
-        .logo span { color: #ffb703; }
+        .logo { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: #ffffff; letter-spacing: 0.5px; }
+        .logo span { color: var(--accent-color); }
         .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { font-size: 0.95rem; font-weight: 600; color: var(--text-grey); transition: var(--transition); }
+        .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-grey); transition: var(--transition); }
         .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
         .menu-toggle { display: none; font-size: 32px; color: #ffffff; cursor: pointer; user-select: none; }
 
-        /* =========================================
-           FIXED HERO SECTION (REDUCED SPACE)
-           ========================================= */
+        /* ---------- Hero: typography-led, no stock photo, no background-attachment:fixed (was breaking on mobile) ---------- */
         .hero {
-            min-height: 55vh; /* Height kam kar di taaki black screen faltu na dikhe */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(to bottom, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 1)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin-top: 70px;
+            min-height: 58vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 25%, rgba(255,190,51,0.16), transparent 60%),
+                        linear-gradient(180deg, #0d0d0d, var(--bg-color));
         }
-
-        .hero-content { max-width: 800px; animation: fadeIn 1s ease-out; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; color: var(--text-white); margin-bottom: 1rem; text-transform: uppercase; }
-        .hero h1 span { color: var(--accent-color); display: block; }
-        .hero p { font-size: 1.05rem; margin-bottom: 2rem; color: #d1d1d1; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        /* =========================================
-           FIXED STOREFRONT BANNER MARGIN
-           ========================================= */
-        .storefront-banner {
-            width: 100%;
-            max-width: 1200px;
-            margin: 1.5rem auto 3rem auto; /* Margin top kam karke gap khatam kar diya */
-            padding: 0 5%;
-            text-align: center;
-        }
-
-        .storefront-banner img {
-            width: 100%;
-            height: auto;
-            max-height: 550px;
-            object-fit: cover;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 190, 51, 0.3);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-        }
+        .hero-content { max-width: 800px; }
+        .eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-color); margin-bottom: 1.2rem; }
+        .hero h1 { font-family: var(--font-display); font-size: 3.4rem; font-weight: 800; color: var(--text-white); margin-bottom: 1.1rem; line-height: 1.15; }
+        .hero h1 span { color: var(--accent-color); display: block; font-style: italic; }
+        .hero p { font-size: 1.05rem; margin: 0 auto 2.2rem; color: #d1d1d1; max-width: 600px; }
 
         .btn-primary {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            background-color: var(--accent-color);
-            color: #121212;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            border: 2px solid var(--accent-color);
-            cursor: pointer;
+            display: inline-block; padding: 0.95rem 2.4rem;
+            background-color: var(--accent-color); color: #121212; font-weight: 700; font-size: 0.9rem;
+            border-radius: 50px; text-transform: uppercase; letter-spacing: 1px;
+            transition: var(--transition); border: 2px solid var(--accent-color); cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255,190,51,0.25);
         }
+        .btn-primary:hover { background-color: transparent; color: var(--accent-color); transform: translateY(-3px); }
 
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--accent-color);
-            transform: translateY(-3px);
+        /* ---------- Signature element: ticket-stub divider (ties to café/order theme) ---------- */
+        .ticket-divider { max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; gap: 10px; }
+        .ticket-divider::before, .ticket-divider::after {
+            content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-color); opacity: 0.45; flex-shrink: 0;
         }
+        .ticket-divider span { flex: 1; border-top: 2px dashed rgba(255,190,51,0.25); }
 
-        .highlights { padding: 4rem 5%; background-color: var(--bg-color); }
+        /* ---------- Storefront banner ---------- */
+        .storefront-banner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 2.5rem 5%; text-align: center; }
+        .storefront-banner img {
+            width: 100%; height: auto; max-height: 550px; object-fit: cover; border-radius: 15px;
+            border: 2px solid rgba(255, 190, 51, 0.3); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+        .storefront-caption { margin-top: 1rem; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-color); }
+
+        /* ---------- Highlights / Why choose us ---------- */
+        .highlights { padding: 2.5rem 5% 4rem; }
         .section-title { text-align: center; margin-bottom: 3rem; }
-        .section-title h2 { font-size: 2.3rem; color: var(--text-white); }
+        .section-title h2 { font-family: var(--font-display); font-size: 2.2rem; color: var(--text-white); margin-top: 0.4rem; }
+        .section-rule { width: 60px; height: 2px; background: var(--accent-color); margin: 14px auto 0; }
 
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .card { background-color: var(--card-bg); padding: 3rem 2rem; border-radius: 15px; text-align: center; border: 1px solid transparent; }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
-        .card-icon { font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem; display: block; }
-        .card h3 { color: var(--text-white); font-size: 1.5rem; margin-bottom: 1rem; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .card { background-color: var(--card-bg); padding: 2.8rem 2rem; border-radius: 15px; text-align: center; border: 1px solid transparent; transition: var(--transition); }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent-color); }
+        .card-icon { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 1.4rem; display: block; }
+        .card h3 { font-family: var(--font-display); color: var(--text-white); font-size: 1.4rem; margin-bottom: 0.8rem; }
+        .card p { font-size: 0.92rem; }
 
-        footer { background-color: #0a0a0a; padding: 4rem 5% 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        /* ---------- Popular picks (menu-ticket style, text-forward, no stock photos) ---------- */
+        .picks { padding: 1rem 5% 4rem; }
+        .picks-list { max-width: 720px; margin: 0 auto; }
+        .pick-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px dashed rgba(255,255,255,0.12); }
+        .pick-row:first-child { padding-top: 0; }
+        .pick-name { font-family: var(--font-display); font-size: 1.15rem; color: var(--text-white); font-weight: 700; }
+        .pick-desc { font-size: 0.85rem; color: var(--text-grey); display: block; margin-top: 2px; }
+        .pick-price { font-weight: 700; color: var(--accent-color); white-space: nowrap; }
+        .picks-note { text-align: center; margin-top: 1.6rem; font-size: 0.8rem; color: #666; }
+
+        /* ---------- Testimonials: honest placeholder, no fake quotes ---------- */
+        .testimonials { padding: 1rem 5% 4rem; }
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.6rem; max-width: 700px; margin: 0 auto; }
+        .testi-card { background: var(--card-bg); border-radius: 14px; padding: 2rem; text-align: center; border: 1px dashed rgba(255,190,51,0.25); }
+        .testi-card .stars { color: var(--accent-color); margin-bottom: 0.8rem; font-size: 0.9rem; }
+        .testi-card p { font-size: 0.9rem; font-style: italic; }
+
+        /* ---------- Visit us / trust bar ---------- */
+        .visit-us { background: var(--bg-deep); padding: 3rem 5%; }
+        .visit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.8rem; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .visit-item i { color: var(--accent-color); font-size: 1.4rem; margin-bottom: 0.6rem; display: block; }
+        .visit-item h4 { font-family: var(--font-display); color: var(--text-white); font-size: 1rem; margin-bottom: 0.3rem; }
+        .visit-item p { font-size: 0.85rem; }
+
+        /* ---------- Footer ---------- */
+        footer { background-color: var(--bg-deep); padding: 3rem 5% 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         .footer-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
-        .social-links { display: flex; gap: 1.5rem; }
-        .social-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: var(--card-bg); color: var(--text-white); }
-        .copyright { font-size: 0.9rem; color: #555; }
+        .social-links { display: flex; gap: 1.2rem; }
+        .social-icon {
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background-color: var(--card-bg); color: var(--text-white); font-size: 1.1rem; transition: var(--transition);
+        }
+        .social-icon:hover { background-color: var(--accent-color); color: #121212; }
+        .copyright { font-size: 0.85rem; color: #555; }
+
+        /* ---------- Scroll reveal (respects reduced motion) ---------- */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
@@ -165,8 +170,9 @@
                 transform: translateY(-150%); transition: var(--transition); opacity: 0; visibility: hidden;
             }
             .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
-            .hero h1 { font-size: 2.3rem; }
+            .hero h1 { font-size: 2.2rem; }
             .grid-container { grid-template-columns: 1fr; }
+            .pick-row { flex-direction: column; gap: 0.2rem; }
         }
     </style>
 </head>
@@ -185,37 +191,105 @@
 
     <section class="hero">
         <div class="hero-content">
+            <span class="eyebrow">Rohtak · Café &amp; Restro</span>
             <h1>Taste The <span>Extraordinary</span></h1>
-            <p>Experience Rohtak's most aesthetic café environment. Premium ambience, artisan coffee, and super vibes await you.</p>
+            <p>Premium ambience, artisan coffee, and food made fresh to order — a Rohtak favourite in the making.</p>
             <a href="menu.html" class="btn-primary">Explore Our Menu</a>
         </div>
     </section>
 
-    <div class="storefront-banner">
-        <img src="storefront.png.jpg" alt="Ultimate Cafe Premium Storefront Branding">
+    <div class="ticket-divider"><span></span></div>
+
+    <div class="storefront-banner reveal">
+        <img src="storefront.png.jpg" alt="Ultimate Cafe storefront in the evening">
+        <div class="storefront-caption">Ultimate Cafe & Restro — Rohtak</div>
     </div>
 
+    <div class="ticket-divider"><span></span></div>
+
     <section class="highlights">
-        <div class="section-title">
-            <h2>Why Choose Us?</h2>
-            <div style="width: 60px; height: 3px; background: var(--accent-color); margin: 10px auto;"></div>
+        <div class="section-title reveal">
+            <span class="eyebrow">Why Choose Us</span>
+            <h2>What Makes Us Different</h2>
+            <div class="section-rule"></div>
         </div>
 
+        <!-- CUSTOMIZE: swap these 3 for the real client's actual strengths. Don't promise delivery unless they truly deliver. -->
         <div class="grid-container">
-            <div class="card">
-                <span class="card-icon">🥗</span>
-                <h3>Fresh Ingredients</h3>
-                <p>We use only the finest, locally sourced organic ingredients to craft our delicious meals.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-leaf card-icon"></i>
+                <h3>Freshly Made</h3>
+                <p>Every dish is prepared to order with quality, locally sourced ingredients.</p>
             </div>
-            <div class="card">
-                <span class="card-icon">⚡</span>
-                <h3>Fast Delivery</h3>
-                <p>Get your favorite food delivered fresh and hot to your doorstep in no time.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-mug-saucer card-icon"></i>
+                <h3>Warm Hospitality</h3>
+                <p>A welcoming space to sit back, work, or catch up over coffee.</p>
             </div>
-            <div class="card">
-                <span class="card-icon">✨</span>
-                <h3>Super Vibes</h3>
-                <p>Relax in an aesthetic ambiance with beautiful neon setups and cozy seating.</p>
+            <div class="card reveal">
+                <i class="fa-solid fa-star card-icon"></i>
+                <h3>Loved Locally</h3>
+                <p>Growing into one of Rohtak's favourite everyday café spots.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="picks">
+        <div class="section-title reveal">
+            <span class="eyebrow">Signature Picks</span>
+            <h2>Popular Right Now</h2>
+            <div class="section-rule"></div>
+        </div>
+        <!-- CUSTOMIZE: replace with the client's real dishes, one-line descriptions and actual prices -->
+        <div class="picks-list reveal">
+            <div class="pick-row">
+                <div><span class="pick-name">Farmhouse Pizza</span><span class="pick-desc">Wood-fired, loaded with veggies & cheese</span></div>
+                <div class="pick-price">₹249</div>
+            </div>
+            <div class="pick-row">
+                <div><span class="pick-name">Signature Cold Coffee</span><span class="pick-desc">House blend, served extra creamy</span></div>
+                <div class="pick-price">₹129</div>
+            </div>
+            <div class="pick-row">
+                <div><span class="pick-name">Ultimate Burger</span><span class="pick-desc">Grilled patty, house sauce, fries on the side</span></div>
+                <div class="pick-price">₹179</div>
+            </div>
+        </div>
+        <p class="picks-note">Full menu on the Menu page</p>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-title reveal">
+            <span class="eyebrow">Reviews</span>
+            <h2>What Guests Say</h2>
+            <div class="section-rule"></div>
+        </div>
+        <!-- CUSTOMIZE: once the client has real Google/Zomato reviews, replace this card with 2-3 real quotes. Never leave fake attributed reviews here. -->
+        <div class="testi-grid reveal">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p>Your first customer reviews will appear here soon.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="visit-us">
+        <!-- CUSTOMIZE: replace all three with the client's real details -->
+        <div class="visit-grid reveal">
+            <div class="visit-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <h4>Address</h4>
+                <p>Add shop address here</p>
+            </div>
+            <div class="visit-item">
+                <i class="fa-solid fa-clock"></i>
+                <h4>Hours</h4>
+                <p>11:00 AM – 11:00 PM, Daily</p>
+            </div>
+            <div class="visit-item">
+                <i class="fa-solid fa-certificate"></i>
+                <h4>FSSAI Lic. No.</h4>
+                <p>XXXXXXXXXXXXXXX</p>
             </div>
         </div>
     </section>
@@ -224,8 +298,8 @@
         <div class="footer-content">
             <div class="logo">Ultimate <span>Cafe</span></div>
             <div class="social-links">
-                <a href="https://instagram.com/aapka_username" target="_blank" class="social-icon">IG</a>
-                <a href="https://wa.me/919999999999" target="_blank" class="social-icon">WA</a>
+                <a href="https://instagram.com/aapka_username" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/919999999999" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="copyright">&copy; 2026 Ultimate Cafe & Restro. All Rights Reserved.</div>
@@ -233,8 +307,22 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('active');
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => io.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('is-visible'));
         }
     </script>
 
