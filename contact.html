@@ -3,396 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | TastyBites</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Ultimate Cafe & Restro | Contact</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ultimate Cafe & Restro" />
+    <meta property="og:title" content="Ultimate Cafe & Restro | Contact" />
+    <meta property="og:description" content="Visit us or message us directly on WhatsApp — Ultimate Cafe & Restro, Rohtak." />
+    <meta property="og:image" content="https://ultimatecafeno1.netlify.app/fine.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:url" content="https://ultimatecafeno1.netlify.app/contact.html" />
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23121212'/%3E%3Ctext x='50' y='68' font-size='58' fill='%23FFBE33' text-anchor='middle' font-family='Georgia,serif'%3EU%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- GLOBAL VARIABLES --- */
         :root {
             --bg-color: #121212;
+            --bg-deep: #0a0a0a;
             --card-bg: #1e1e1e;
-            --primary-color: #FFBE33;
-            --primary-hover: #e6a825;
+            --accent-color: #FFBE33;
             --text-white: #FFFFFF;
             --text-grey: #A8A8A8;
-            --font-main: 'Poppins', sans-serif;
-            --transition: all 0.3s ease;
+            --font-display: 'Playfair Display', serif;
+            --font-main: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease-in-out;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            line-height: 1.6;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-grey); line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
-        /* --- NAVBAR (Consistent) --- */
-        header {
-            background-color: rgba(18, 18, 18, 0.95);
-            border-bottom: 1px solid #333;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
+        /* ---------- Navbar (identical to index.html / menu.html) ---------- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111;
+            display: flex; justify-content: space-between; align-items: center; padding: 0 24px; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 190, 51, 0.12);
         }
+        .logo { font-family: var(--font-display); font-weight: 700; font-size: 24px; color: #ffffff; letter-spacing: 0.5px; }
+        .logo span { color: var(--accent-color); }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-grey); transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 32px; color: #ffffff; cursor: pointer; user-select: none; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            color: var(--text-grey);
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        /* --- PAGE HERO --- */
-        .contact-hero {
-            text-align: center;
-            padding: 4rem 1rem 2rem;
-        }
-
-        .contact-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-hero p {
-            color: var(--text-grey);
-            font-size: 1.1rem;
-        }
-
-        /* --- LAYOUT CONTAINER --- */
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns for desktop */
-            gap: 3rem;
-        }
-
-        /* --- LEFT COLUMN: INFO --- */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .info-box {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid #333;
-        }
-
-        .info-box h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-grey);
-        }
-
-        .info-icon {
-            font-size: 1.2rem;
-        }
-
-        .info-text strong {
-            color: var(--text-white);
-            display: block;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-btn {
-            flex: 1;
-            text-align: center;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-weight: 600;
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .social-btn:hover {
-            background: var(--primary-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px rgba(255, 190, 51, 0.3);
-        }
-
-        /* --- RIGHT COLUMN: FORM & MAP --- */
-        .contact-main {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .form-box, .map-box {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid #333;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-grey);
-        }
-
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            background-color: #121212;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: var(--text-white);
-            font-family: var(--font-main);
-            transition: var(--transition);
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(255, 190, 51, 0.2);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background-color: var(--primary-color);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.02);
-            background-color: var(--primary-hover);
-            box-shadow: 0 0 20px rgba(255, 190, 51, 0.4);
-        }
-
-        /* Map Placeholder */
-        .map-placeholder {
-            width: 100%;
-            height: 250px;
-            background-color: #0e0e0e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-grey);
-            border: 1px dashed #333;
-            border-radius: 6px;
-            flex-direction: column;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #0e0e0e;
-            border-top: 1px solid #333;
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-grey);
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .contact-hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; } /* Simple hide mobile */
-            .contact-container {
-                grid-template-columns: 1fr; /* Stack on mobile */
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute; top: 70px; left: 0; width: 100%; background-color: var(--card-bg);
+                flex-direction: column; align-items: center; padding: 2rem 0; gap: 1.5rem;
+                transform: translateY(-150%); transition: var(--transition); opacity: 0; visibility: hidden;
             }
+            .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
         }
-            /* Mobile par hamburger click hone par menu kholne ke liye */
-    .nav-links.active {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        position: absolute !important;
-        top: 70px !important;
-        left: 0 !important;
-        width: 100% !important;
-        background-color: #111111 !important;
-        padding: 20px 0 !important;
-        z-index: 999 !important;
-    }
+
+        /* ---------- Hero ---------- */
+        .contact-hero { text-align: center; padding: 130px 5% 1rem; }
+        .contact-hero .eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-color); }
+        .contact-hero h1 { font-family: var(--font-display); font-size: 2.6rem; color: var(--text-white); margin: 0.5rem 0; }
+        .contact-hero p { color: var(--text-grey); font-size: 1rem; }
+
+        /* ---------- Layout ---------- */
+        .contact-container { max-width: 1200px; margin: 0 auto; padding: 2rem 5% 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .contact-info, .contact-main { display: flex; flex-direction: column; gap: 1.6rem; }
+
+        .info-box { background: var(--card-bg); padding: 1.6rem; border-radius: 14px; border: 1px solid #2a2a2a; }
+        .info-box h3 {
+            font-family: var(--font-display); color: var(--text-white); font-size: 1.15rem; margin-bottom: 1rem;
+            border-bottom: 1px solid #2a2a2a; padding-bottom: 0.6rem;
+        }
+        .info-item { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1rem; color: var(--text-grey); }
+        .info-item:last-child { margin-bottom: 0; }
+        .info-icon { width: 22px; height: 22px; color: var(--accent-color); flex-shrink: 0; margin-top: 2px; }
+        .info-text strong { color: var(--text-white); display: block; font-size: 0.95rem; margin-bottom: 2px; }
+
+        .social-links { display: flex; gap: 1rem; margin-top: 0.4rem; }
+        .social-btn {
+            flex: 1; text-align: center; padding: 0.8rem; border-radius: 8px; font-weight: 600;
+            background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color);
+            transition: var(--transition); cursor: pointer;
+        }
+        .social-btn:hover { background: var(--accent-color); color: var(--bg-color); box-shadow: 0 0 15px rgba(255, 190, 51, 0.3); }
+
+        .form-box, .map-box { background: var(--card-bg); padding: 2rem; border-radius: 14px; border: 1px solid #2a2a2a; }
+        .form-box h3 { font-family: var(--font-display); color: var(--text-white); font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .form-box p { font-size: 0.9rem; margin-bottom: 1.4rem; }
+
+        .contact-btn { display: block; width: 100%; padding: 1rem; border-radius: 8px; font-weight: 700; text-align: center; transition: var(--transition); font-size: 0.95rem; margin-bottom: 1rem; }
+        .contact-btn:last-child { margin-bottom: 0; }
+        .contact-btn.primary { background-color: var(--accent-color); color: var(--bg-color); }
+        .contact-btn.primary:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 190, 51, 0.4); }
+        .contact-btn.secondary { background: transparent; border: 1px solid var(--text-grey); color: var(--text-white); }
+        .contact-btn.secondary:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+        .map-placeholder { width: 100%; border-radius: 10px; overflow: hidden; }
+
+        footer { background-color: var(--bg-deep); padding: 3rem 5% 2rem; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-icon-links { display: flex; gap: 1.2rem; }
+        .social-icon {
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background-color: var(--card-bg); color: var(--text-white); transition: var(--transition);
+        }
+        .social-icon:hover { background-color: var(--accent-color); color: #121212; }
+        .social-icon svg { width: 20px; height: 20px; }
+        .copyright { font-size: 0.85rem; color: #555; }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 { font-size: 2rem; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-<header style="position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: #111111; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; box-sizing: border-box; z-index: 1000;">
-    <div class="logo" style="font-weight: bold; font-size: 24px; font-family: sans-serif; color: #ffffff; letter-spacing: 1px;">
-        ULTIMATE <span style="color: #ffb703;">CAFE</span>
-    </div>
-    
-    <ul id="nav-links" class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
+    <header class="navbar">
+        <div class="logo">ULTIMATE <span>CAFE</span></div>
+        <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </header>
 
-    <div class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('active')" style="display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1010;">
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-        <span class="bar" style="width: 25px; height: 3px; background-color: white; display: block;"></span>
-    </div>
-</header>
-    <!-- Page Title -->
     <section class="contact-hero">
-        <h1>Get In Touch</h1>
-        <p>Visit us or place your order directly via phone or social media.</p>
+        <span class="eyebrow">Get In Touch</span>
+        <h1>We'd Love To Hear From You</h1>
+        <p>Visit us or message us directly — no forms, just WhatsApp.</p>
     </section>
 
-    <!-- Two-Column Layout -->
+    <!-- CUSTOMIZE: one WhatsApp number used everywhere on this page now (919999999999). Replace it in ALL 4 spots below when a real client is onboarded. -->
     <main class="contact-container">
-        
-        <!-- Left Column: Contact Info -->
+
         <section class="contact-info">
-            
             <div class="info-box">
-                <h3>📍 Location & Phone</h3>
+                <h3>Location & Phone</h3>
                 <div class="info-item">
-                    <span class="info-icon">📞</span>
-                    <div class="info-text">
-                        <strong>Call Us</strong>
-                        +91 9999999999
-                    </div>
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5c.8 0 1.9 2 2 2.8.1.6-.3 1-.8 1.4l-.9.7c.6 1.6 2.2 3.2 3.8 3.8l.7-.9c.4-.5.8-.9 1.4-.8.8.1 2.8 1.2 2.8 2 0 1.4-1.4 2.5-2.8 2.5-4.4 0-9-4.6-9-9 0-1.4 1.1-2.8 2.5-2.8z"/></svg>
+                    <div class="info-text"><strong>Call Us</strong>+91 99999 99999</div>
                 </div>
                 <div class="info-item">
-                    <span class="info-icon">🏠</span>
-                    <div class="info-text">
-                        <strong>Address</strong>
-                        Sheela bypaas,Rohtak
-                    </div>
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.4-7-11.5A7 7 0 0 1 19 9.5C19 14.6 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                    <div class="info-text"><strong>Address</strong>Sheela Bypass, Rohtak <em style="font-style:normal; color:#666;">(sample — confirm exact location)</em></div>
                 </div>
             </div>
 
             <div class="info-box">
-                <h3>🕒 Opening Hours</h3>
+                <h3>Opening Hours</h3>
                 <div class="info-item">
-                    <div class="info-text">
-                        <strong>Monday - Friday</strong>
-                        11:00 AM - 11:00 PM
-                    </div>
+                    <div class="info-text"><strong>Monday – Friday</strong>11:00 AM – 11:00 PM</div>
                 </div>
                 <div class="info-item">
-                    <div class="info-text">
-                        <strong>Saturday - Sunday</strong>
-                        10:00 AM - 12:00 AM
-                    </div>
+                    <div class="info-text"><strong>Saturday – Sunday</strong>10:00 AM – 12:00 AM</div>
                 </div>
             </div>
 
             <div class="info-box">
-                <h3>📱 Follow Us</h3>
+                <h3>Follow Us</h3>
                 <div class="social-links">
-                    <a href="https://instagram.com/tumhara_username"
-" class="social-btn">Instagram</a>
-<a href="https://wa.me/911234567890?text=Hello!%20I%20want%20to%20order%20from%20TastyBites." target="_blank" class="social-btn">WhatsApp</a>
+                    <a href="https://instagram.com/aapka_username" target="_blank" class="social-btn">Instagram</a>
+                    <a href="https://wa.me/919999999999?text=Hello!%20I%20have%20a%20question%20about%20Ultimate%20Cafe%20%26%20Restro." target="_blank" class="social-btn">WhatsApp</a>
                 </div>
             </div>
-
         </section>
 
-        <!-- Right Column: Form & Location -->
         <section class="contact-main">
-            
-            <!-- Contact Form -->
+            <!-- The old contact form had no action — submitting it silently did nothing. Replaced with the same WhatsApp-first pattern used across the rest of the site. -->
             <div class="form-box">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4" placeholder="I'd like to book a table..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                <h3>Send Us a Message</h3>
+                <p>Fastest way to reach us — tap below, no forms to fill.</p>
+                <a href="https://wa.me/919999999999?text=Hello!%20I%20have%20a%20question%20about%20Ultimate%20Cafe%20%26%20Restro." target="_blank" class="contact-btn primary">Message on WhatsApp</a>
+                <a href="tel:+919999999999" class="contact-btn secondary">Call Now</a>
             </div>
 
-            <!-- Google Maps Placeholder -->
             <div class="map-box">
+                <!-- CUSTOMIZE: currently a city-level Rohtak map. Once real client's shop address is known, drop a Maps pin at their exact location and swap this embed src. -->
                 <div class="map-placeholder">
-                   
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55843.56459958316!2d76.57404455!3d28.89131925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d84e499173bb3%3A0x2a9a953a81157ba3!2sRohtak%2C%20Haryana!5e0!3m2!1sen!2sin!4v1716380000000!5m2!1sen!2sin" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55843.56459958316!2d76.57404455!3d28.89131925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d84e499173bb3%3A0x2a9a953a81157ba3!2sRohtak%2C%20Haryana!5e0!3m2!1sen!2sin!4v1716380000000!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 TastyBites Cafe. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="logo">Ultimate <span>Cafe</span></div>
+            <div class="social-icon-links">
+                <a href="https://instagram.com/aapka_username" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://wa.me/919999999999" target="_blank" class="social-icon" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5A9.4 9.4 0 0 0 3.8 17L2.5 21.5l4.6-1.2A9.4 9.4 0 1 0 12 2.5zm5.4 13.3c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.5-3.9-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6c-.1.2-.2.3-.1.5.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.9c.2.1.4.2.4.4.1.2.1.6-.1 1.2z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2026 Ultimate Cafe & Restro. All Rights Reserved.</div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
